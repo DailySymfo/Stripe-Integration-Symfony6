@@ -1,0 +1,473 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stripe Paiement !{% endblock %}
+
+{% block body %}
+<style>
+     .container
+     {
+        position: relative;
+        width: 375px;
+        height: 667px;
+        background: gainsboro;
+        border-radius: 25px;
+        left: 644px;
+        top: 116px;
+        transform: scale(1.2);
+
+     }
+     .cart
+     {
+        position: absolute;
+        width: 176px;
+        height: 30px;
+        left: 100px;
+        top: 48px;
+
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+        /* identical to box height */
+
+        text-align: center;
+
+        color: #A450E4;
+
+     }
+
+     .product-card
+     {
+        position: absolute;
+        width: 325px;
+        height: 100px;
+        left: 25px;
+        top: 106.44px;
+
+        background: #FFFFFF;
+        box-shadow: 0px 1px 4px rgba(153, 128, 172, 0.5);
+        border-radius: 15px;
+     }
+
+     .product
+     {
+        position: absolute;
+        width: 100px;
+        height: 80px;
+        left: 11px;
+        top: 10.44px;
+     }
+
+     .product-name
+     {
+        position: absolute;
+        width: 176px;
+        height: 24px;
+        left: 127px;
+        top: 10.44px;
+
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+        /* identical to box height */
+
+
+        color: #1E1E1E;
+     }
+
+     .product-details
+     {
+        position: absolute;
+        width: 176px;
+        height: 24px;
+        left: 127px;
+        top: 37.44px;
+
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 200;
+        font-size: 15px;
+        line-height: 24px;
+        /* identical to box height */
+
+
+        color: #1E1E1E;
+     }
+
+     .product-price
+     {
+        position: absolute;
+        width: 32px;
+        height: 21px;
+        left: 122px;
+        top: 70.44px;
+
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        /* identical to box height */
+
+        text-align: right;
+
+        color: #393939;
+
+     }
+
+     .product-delete
+     {
+        position: absolute;
+        width: 28px;
+        height: 25px;
+        left: 336.06px;
+        top: 97.44px;
+        background: #FF0101;
+        border-radius: 13px;
+        cursor: pointer;
+
+
+     }
+
+
+     .resume-card
+     { 
+        position: absolute;
+        width: 325px;
+        height: 160px;
+        left: 25px;
+        top: 248px;
+
+        background: #FFFFFF;
+        box-shadow: 0px 1px 4px rgba(153, 128, 172, 0.5);
+        border-radius: 15px;
+     }
+
+     .order-summary
+     {
+        position: absolute;
+         width: 137px;
+         height: 24px;
+         left: 40px;
+         top: 245px;
+         font-family: 'Poppins';
+         font-style: normal;
+         font-weight: 500;
+         font-size: 16px;
+         line-height: 24px;
+         color: #9980AC;
+         text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+      }
+
+     .line
+     {
+        position: absolute;
+        width: 279px;
+        height: 0px;
+        left: 40px;
+        top: 284px;
+
+        border: 1px solid rgba(153, 128, 172, 0.5);
+     }
+
+     .order 
+     {
+        position: absolute;
+        width: 137px;
+        height: 22px;
+        left: 39px;
+        top: 293px;
+
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height */
+
+
+        color: #9980AC;
+    }
+
+    .order-price
+    {
+        position: absolute;
+        width: 137px;
+        height: 22px;
+        left: 187px;
+        top: 293px;
+
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height */
+
+        text-align: right;
+
+        color: #9980AC;
+
+    }
+
+    .delivery
+     {
+        position: absolute;
+        width: 137px;
+        height: 22px;
+        left: 39px;
+        top: 330px;
+
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height */
+
+
+        color: #9980AC;
+
+     }
+
+     .delivery-price
+     {
+        position: absolute;
+        width: 137px;
+        height: 22px;
+        left: 187px;
+        top: 330px;
+
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height */
+
+        text-align: right;
+
+        color: #9980AC;
+     }
+
+   
+     .total
+     {
+        position: absolute;
+        width: 137px;
+        height: 22px;
+        left: 40px;
+        top: 371px;
+
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height */
+
+
+        color: #9980AC;
+     }
+
+     .total-price
+     {
+        position: absolute;
+        width: 137px;
+        height: 22px;
+        left: 187px;
+        top: 371px;
+
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height */
+
+        text-align: right;
+
+        color: #9980AC;
+
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+     }
+
+
+     .paiment-mode-card
+     {
+        position: absolute;
+        width: 325px;
+        height: 50px;
+        left: 25px;
+        top: 474px;
+
+        /*background: #008cdd;*/
+        box-shadow: 0px 1px 4px rgba(153, 128, 172, 0.5);
+        border-radius: 15px;
+     }
+
+     .paiement-mode
+     {
+        position: absolute;
+        width: 136px;
+        height: 24px;
+        left: 47px;
+        top: 489px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+        color: #9980AC;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+     }
+
+     .paiement-mode-type
+     {
+        position: absolute;
+        width: 137px;
+        height: 21px;
+        left: 173px;
+        top: 489px;
+
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        /* identical to box height */
+
+        text-align: right;
+
+        color: #008cdd;
+        background: none;
+        border: none;
+        cursor: pointer;
+     }
+
+
+     .btn
+     {
+        position: absolute;
+        width: 325px;
+        height: 45px;
+        left: 25px;
+        top: 596px;
+
+        background: #9980AC;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px;
+        cursor: pointer;
+        border: 1px;
+     }
+
+     .paynow
+     {
+        width: 137px;
+        height: 27px;
+        left: 119px;
+        top: 605px;
+
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 27px;
+        /* identical to box height */
+
+        text-align: center;
+
+        color: #FFFFFF;
+
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+     }
+
+    
+    
+
+</style>
+
+<div class="container">
+
+    <h1 class="cart">My Cart</h1>
+
+      
+      <section id="product">
+
+        <div class="product-card">
+      
+            <img src="{{asset('/image/product.png')}}" alt="product" class="product">
+
+            <span class="product-name">Nike Men's Joyride</span>
+
+            <p class="product-details">Run FlyKnit shoes</p>
+
+            <span class="product-price">$681</span> 
+        
+        </div>
+
+     
+   
+         <img src="{{asset('/image/delete.png')}}" alt="product-delete" class="product-delete">
+
+      </section>
+
+      <section id="resume-card">
+
+            <div class="resume-card"></div>
+
+            <h2 class="order-summary">Order Summary</h2>
+
+            <img src="{{asset('/image/line.png')}}" alt="line" class="line">
+
+            <span class="order">Order</span>
+
+            <span class="order-price">$681</span>
+
+            <span class="delivery">Delivery</span>
+
+            <span class="delivery-price">$6.5</span>
+
+            <span class="total">Total</span>
+
+            <span class="total-price">$687.5</span>
+
+            <div class="paiment-mode-card"></div>
+
+            <span class="paiement-mode">Payment Mode</span>
+            
+            <span class="paiement-mode-type">Stripe</span>
+
+      </section>   
+
+      <section class="checkout">
+
+         <form action="{{path('app_checkout')}}" method="post">
+     
+            <input type="hidden" name="amount" value="687.5">
+      
+            <input type="hidden" name="quantity" value="1">
+      
+            
+             <button type="submit" class="btn">
+             
+               <span class="paynow">Pay Now</span>
+            
+            </button>
+           
+          </form>
+
+      </section>
+            
+    
+
+
+</div>
+
+
+{% endblock %}

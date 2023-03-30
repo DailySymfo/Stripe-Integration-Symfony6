@@ -1,0 +1,80 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Thanks for your order!{% endblock %}
+
+{% block body %}
+
+<style>
+    .container
+    {
+       position: relative;
+       width: 375px;
+       height: 667px;
+       background: gainsboro;
+       border-radius: 25px;
+       left: 644px;
+       top: 116px;
+       transform: scale(1.2);
+
+    }
+
+  .title
+  {
+    position: absolute;
+    left: 8%;
+    top: 19%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 21px;
+    text-align: right;
+    color: #008cdd;
+}
+
+.details
+{
+    position: absolute;
+    left: 0%;
+    top: 35%;
+    width: 352px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: right;
+}
+
+.retour
+{
+    position: absolute;
+    left: -43%;
+    top: 48%;
+    width: 352px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: right;
+}
+
+</style>
+
+<div class="container">
+
+    <p class="title">{{name}}, Merci pour votre commande !</p>
+    <p class="details">
+      C'est un plaisir de vous servir! Si vous avez des questions, n'hesitez pas à nous écrire
+      <a href="mailto:orders@example.com">orders@example.com</a>.
+    </p>
+
+    <a href="/" class="retour">Retour</a>
+
+</div>
+ 
+
+
+{% endblock %}
